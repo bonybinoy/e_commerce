@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:dio/dio.dart';
 
 class ChatAssistantPage extends StatefulWidget {
   const ChatAssistantPage({Key? key}) : super(key: key);
@@ -11,16 +11,52 @@ class ChatAssistantPage extends StatefulWidget {
 class _ChatAssistantPageState extends State<ChatAssistantPage> {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
+  final Dio _dio = Dio();
+  final String openAIKey = 'YOUR_OPENAI_API_KEY'; // Make sure to replace this with your actual OpenAI API Key
 
-  void _sendMessage() {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> _sendMessage() async {
     final messageText = _controller.text.trim();
     if (messageText.isNotEmpty) {
-      setState(() {
-        _messages.add({"sender": "user", "message": messageText});
-        _messages.add({"sender": "assistant", "message": "You said: $messageText"}); // Simulated response
+      _addMessage("user", messageText); // Add user's message to chat
+
+      try {
+        // Sending request to OpenAI's API
+        final response = await _dio.post(
+          'https://api.openai.com/v1/chat/completions', // OpenAI API endpoint for chat completions
+          data: {
+            'model': 'gpt-3.5-turbo', // Specify the model
+            'messages': [
+              {'role': 'user', 'content': messageText},
+            ],
+          },
+          options: Options(
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $openAIKey',
+            },
+          ),
+        );
+
+        // Extract the assistant's response from the API response
+        String assistantResponse = response.data['choices'][0]['message']['content'];
+        _addMessage("assistant", assistantResponse);
+      } catch (e) {
+        _addMessage("assistant", "Sorry, I couldn't process your request.");
+      } finally {
         _controller.clear();
-      });
+      }
     }
+  }
+
+  void _addMessage(String sender, String message) {
+    setState(() {
+      _messages.add({"sender": sender, "message": message});
+    });
   }
 
   Widget _buildMessageItem(Map<String, String> message) {
