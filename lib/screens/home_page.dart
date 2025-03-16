@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
 import 'package:e_commerce/models/category_model.dart';
+import 'package:e_commerce/screens/chat_assistant_page.dart';
 import 'package:e_commerce/screens/detail_page.dart';
 import 'package:e_commerce/widget/icon_widget.dart';
 import 'package:e_commerce/widget/image_widget.dart';
@@ -80,11 +81,29 @@ class _HomePageState extends State<HomePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20,),
-              child: TextWidget(
-                text: "LUXECART",
-                size: 20,
-               // weight: FontWeight.bold,
+              padding: const EdgeInsets.only(top: 30, left: 20,),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextWidget(
+                      text: "LUXECART",
+                      size: 20,
+                      // weight: FontWeight.bold,
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.chat_rounded),
+                      onPressed: () {
+                        // Navigate to the chat assistant page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ChatAssistantPage()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 10),
