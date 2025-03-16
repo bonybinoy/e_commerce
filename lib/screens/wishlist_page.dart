@@ -125,7 +125,7 @@ class _WishlistPageState extends State<WishlistPage> {
                                         return AlertDialog(
                                           title: const Text("Remove"),
                                           content: const Text(
-                                              "Do you want to remove this item?"),
+                                              "You haven't added any products yet?"),
                                           actions: <Widget>[
                                             TextButton(
                                               child: const Text(
