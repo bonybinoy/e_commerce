@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
@@ -80,14 +81,15 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 20,),
-              child: Text(
-                'E-commerce',
-                style: GoogleFonts.cabin(fontSize: 20),
+              child: TextWidget(
+                text: "LUXECART",
+                size: 20,
+               // weight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 10),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 1.1,
+              width: MediaQuery.of(context).size.width / 1,
               child: TextFormField(
                 controller: searchController,
                 decoration: InputDecoration(
@@ -95,12 +97,20 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(10.0),
                     child: IconWidget(icon: Icons.search),
                   ),
-                  labelText: "Search the entire shop",
+                  labelText: "Search for products",
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(150),
                   ),
                 ),
               ),
+            ),
+            const SizedBox(height: 20),
+            productResponseModel?.products?.isEmpty ?? true
+                ? SizedBox()
+                : TextWidget(
+              text: " Crazy Deals",
+              size: 18,
+              weight: FontWeight.bold,
             ),
             const SizedBox(height: 20),
             CarouselSlider(
@@ -119,10 +129,14 @@ class _HomePageState extends State<HomePage> {
             productResponseModel?.products?.isEmpty ?? true
                 ? SizedBox()
                 : TextWidget(
-                    text: "Products",
+                    text: "  Related top picks for you",
                     size: 18,
                     weight: FontWeight.bold,
                   ),
+            const SizedBox(height: 20),
+            productResponseModel?.products?.isEmpty ?? true
+                ? SizedBox()
+                :
             isLoading
                 ? const SpinKitCircle(
                     color: Colors.grey,

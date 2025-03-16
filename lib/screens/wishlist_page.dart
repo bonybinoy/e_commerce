@@ -56,7 +56,7 @@ class _WishlistPageState extends State<WishlistPage> {
           children: [
             Lottie.asset('assets/images/Animation - 1729504579388.json',
                 height: MediaQuery.of(context).size.height / 3.5),
-            const TextWidget(text: "WishList is empty"),
+            const TextWidget(text: "You haven't added any products yet"),
           ],
         ),
       )

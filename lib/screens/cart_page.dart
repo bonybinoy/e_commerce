@@ -92,7 +92,7 @@ class _CartPageState extends State<CartPage> {
     var options = {
       "key": "rzp_test_waeUUkXGdhnmoe",
       "amount": (_totalPrice * 0.18 + _totalPrice) * 100.toInt(),
-      "name": "E-commerce",
+      "name": "LUXECART",
       "description": "Payment for cart items",
       "timeout": "180",
       "currency": "INR",
