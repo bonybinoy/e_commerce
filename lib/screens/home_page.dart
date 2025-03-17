@@ -15,6 +15,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final List<Widget> imgList = [
+
+  Image.asset("assets/images/logoo.jpg", fit: BoxFit.fill),
   Image.asset("assets/images/img.jpg", fit: BoxFit.fill),
   Image.asset("assets/images/img1.jpg", fit: BoxFit.fill),
   Image.asset("assets/images/img2.jpg", fit: BoxFit.fill),
