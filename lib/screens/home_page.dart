@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:e_commerce/models/category_model.dart';
 import 'package:e_commerce/screens/chat_assistant_page.dart';
 import 'package:e_commerce/screens/detail_page.dart';
+import 'package:e_commerce/screens/settings_page.dart';
 import 'package:e_commerce/widget/icon_widget.dart';
 import 'package:e_commerce/widget/image_widget.dart';
 import 'package:e_commerce/models/product_response_model.dart';

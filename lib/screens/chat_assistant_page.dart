@@ -12,7 +12,8 @@ class _ChatAssistantPageState extends State<ChatAssistantPage> {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
   final Dio _dio = Dio();
-  final String openAIKey = 'YOUR_OPENAI_API_KEY'; // Make sure to replace this with your actual OpenAI API Key
+  // Replace this with your actual OpenAI API Key
+  final String openAIKey = 'AIzaSyAQ_ciJPPn48Q1WQ4D7isaMqmTpKOIxyeA';
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _ChatAssistantPageState extends State<ChatAssistantPage> {
       try {
         // Sending request to OpenAI's API
         final response = await _dio.post(
-          'https://api.openai.com/v1/chat/completions', // OpenAI API endpoint for chat completions
+          'AIzaSyAQ_ciJPPn48Q1WQ4D7isaMqmTpKOIxyeA', // OpenAI API endpoint for chat completions
           data: {
             'model': 'gpt-3.5-turbo', // Specify the model
             'messages': [
@@ -84,7 +85,7 @@ class _ChatAssistantPageState extends State<ChatAssistantPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AI Chat Assistant'),
+        title: const Text('AI Chat Assistant'),
       ),
       body: Column(
         children: [
@@ -126,4 +127,10 @@ class _ChatAssistantPageState extends State<ChatAssistantPage> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: ChatAssistantPage(),
+  ));
 }
