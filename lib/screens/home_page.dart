@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     TextWidget(
                       text: "LUXECART",
-                      size: 20,
+                      size: 21,
                       // weight: FontWeight.bold,
                     ),
                     IconButton(
